@@ -1,0 +1,20 @@
+version: '2'
+services:
+
+  lexicon:
+    build:
+      context: .
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  whoami:
+    image: jwilder/whoami
+    environment:
+      - VIRTUAL_HOST=www.toto.com,whoami.local,~^whoami\..*\.nip\.io
