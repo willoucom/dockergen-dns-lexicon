@@ -1,3 +1,4 @@
+#!/bin/bash
 {{ range $host, $containers := groupByMulti $ "Env.VIRTUAL_HOST" "," }}
- {{ $host }}
+lexicon $LEXICON_PROVIDER update {{ $host }} A --name {{ $host }} --content $LEXICON_IP
 {{ end }}

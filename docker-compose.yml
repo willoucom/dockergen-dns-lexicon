@@ -1,11 +1,15 @@
 version: '2'
 services:
-
   lexicon:
     build:
       context: .
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+    environment:
+      - LEXICON_IP=127.0.0.1
+      - LEXICON_PROVIDER=route53
+      - LEXICON_ROUTE53_ACCESS_KEY=
+      - LEXICON_ROUTE53_ACCESS_SECRET=
 
   nginx-proxy:
     image: jwilder/nginx-proxy
@@ -17,4 +21,4 @@ services:
   whoami:
     image: jwilder/whoami
     environment:
-      - VIRTUAL_HOST=www.toto.com,whoami.local,~^whoami\..*\.nip\.io
+      - VIRTUAL_HOST=test.willou.com

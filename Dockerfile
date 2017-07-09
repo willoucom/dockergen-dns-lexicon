@@ -4,7 +4,8 @@ MAINTAINER Wilfried JEANNIARD <willou.com@gmail.com>
 RUN apt-get update \
   && apt-get install -y wget python-pip \
   && pip install --upgrade pip \
-  && pip install dns-lexicon \  
+  && pip install dns-lexicon \
+  && pip install dns-lexicon[route53] \
   && rm -rf /var/lib/apt/lists/*
 
 # Install docker-gen
