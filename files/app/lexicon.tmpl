@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "i'm starting lexicon"
+sleep 1
 {{ range $host, $containers := groupByMulti $ "Env.VIRTUAL_HOST" "," }}
+echo "Update {{ $host }}"
 lexicon $LEXICON_PROVIDER update {{ $host }} A --name {{ $host }} --content $LEXICON_IP
 {{ end }}
